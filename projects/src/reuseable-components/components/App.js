@@ -4,32 +4,20 @@ import Button from "./Button"
 export default function App(){
     return(
         <div>
-            <Button 
-                bgcolor="primary" 
-                isRoundedCorners={true} 
-                size="xs"
-            > 
-                Click Me! 
-            </Button>
-            <Button 
-                bgcolor="secondary" 
-                isRoundedCorners={false} 
-                size="sm"
-            > 
-                Click Me! 
-            </Button>
-            <Button 
-                bgcolor="tertiary" 
-                isRoundedCorners={true} 
-                size="md"
-            > 
-                Click Me! 
-            </Button>
-            <Button 
-                size="lg"
-            > 
-                Click Me! 
-            </Button>
+            <h1 style={{marginTop:"20px", marginLeft:"20px", fontSize:"30px"}}> Buttons with Different colors </h1>
+            <Button> Default </Button>
+            <Button bgcolor="primary"> Primary </Button>
+            <Button bgcolor="secondary"> Secondary </Button>
+            <Button bgcolor="tertiary"> Tertiary </Button>
+            <br />
+            <h1 style={{marginTop:"20px", marginLeft:"20px", fontSize:"30px"}}> Button with Rounded Corner </h1>
+            <Button isRoundedCorners={true}> button </Button>
+            <br />
+            <h1 style={{marginTop:"20px", marginLeft:"20px", fontSize:"30px"}}> Button with Different Variants </h1>
+            <Button variant="solid"> Solid </Button>
+            <Button variant="outline"> Outline </Button>
+            <Button variant="ghost"> Ghost </Button>
+            <Button variant="link"> Link </Button>
         </div>
     )
 }
