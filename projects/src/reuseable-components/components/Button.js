@@ -54,10 +54,15 @@ export default function Button({
     buttonSize,
     isRoundedCorners,
     size,
-    variant
+    variant,
+    rightIcon,
+    leftIcon,
+    loadingText,
+    isLoading
 })
 {
     const [toggle, setToggle] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     function handleOnMouseEnter(){
         if(variant && variant !== "solid"){
@@ -73,6 +78,9 @@ export default function Button({
     function setBgColor(){
         if(toggle && variant !== "link"){
             return "#AEC6CF";
+        }
+        if(loading){
+            return "#cfcfc4"
         }
         if(bgcolor && variant){
             return btnVariants[variant].bgColor;
@@ -104,6 +112,15 @@ export default function Button({
         } 
         return backgroundColors.primary;
     }
+
+    function handleOnClick(){
+        console.log("clicked")
+        if(isLoading){
+            setLoading(true);
+            setBgColor();
+        }
+        console.log(loading);
+    }
     
     return(
         <button
@@ -125,8 +142,13 @@ export default function Button({
             }}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
+            disabled={loading}
+            onClick={handleOnClick}
         >
-            {children}
+            { leftIcon && <i class={`fas fa-${leftIcon}`} style={{paddingRight:"10px"}}></i> }
+            { loading && <i class={`fas fa-spinner`} style={{paddingRight:"10px"}}></i> }
+            { loading ? loadingText : children }
+            { rightIcon && <i class={`fas fa-${rightIcon}`} style={{paddingLeft:"5px"}}></i> }
         </button>
     );
 }
