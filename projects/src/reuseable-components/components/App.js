@@ -8,7 +8,7 @@ export default function App(){
             <Button> Default </Button>
             <Button bgcolor="primary"> Primary </Button>
             <Button bgcolor="secondary"> Secondary </Button>
-            <Button bgcolor="tertiary"> Tertiary </Button>
+            <Button bgcolor="tertiary" variant="outline"> Tertiary </Button>
             <br />
             <h1 style={{marginTop:"20px", marginLeft:"20px", fontSize:"30px"}}> Button with Rounded Corner </h1>
             <Button isRoundedCorners={true}> button </Button>

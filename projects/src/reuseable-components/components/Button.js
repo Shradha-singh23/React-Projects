@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 const backgroundColors = {
-    default: "blue",
     primary: "#97C1A9",
     secondary: "#CBAACB",
     tertiary: "#744C24"
@@ -33,10 +32,10 @@ const btnSize = {
 const btnVariants = {
     solid:{
         border: "none",
-        bgColor: "#E8DFD5"
+        bgColor: "#97C1A9"
     },
     outline: {
-        border: "2px solid teal",
+        border: "2px solid",
         bgColor: "white"
     },
     ghost :{
@@ -61,30 +60,49 @@ export default function Button({
     const [toggle, setToggle] = useState(false);
 
     function handleOnMouseEnter(){
-        if(btnVariants[variant]){
+        if(variant && variant !== "solid"){
             setToggle(true)
         }
     }
 
     function handleOnMouseLeave(){
-        if(btnVariants[variant])
+        if(variant && variant !== "solid")
         setToggle(false)
     }
 
     function setBgColor(){
+        if(toggle && variant !== "link"){
+            return "#AEC6CF";
+        }
+        if(bgcolor && variant){
+            return btnVariants[variant].bgColor;
+        }
+        
         if(backgroundColors[bgcolor]){
             return backgroundColors[bgcolor];
         }
         if(btnVariants[variant] && !toggle){
             return btnVariants[variant].bgColor;
         }
-        if(toggle && variant !== "link"){
-            return "#FDF9F2";
-        }
         if(variant === "link"){
             return "white";
         }
-        return backgroundColors.default;
+        return backgroundColors.primary;
+    }
+
+    function setTextColor(){
+        if(btnVariants[variant] && variant !== "solid"){
+            return "#36454F";
+        }
+        return "white";
+    }
+
+    function setBorderColor(){
+        if(variant === "outline"){
+            if(bgcolor && backgroundColors[bgcolor])
+            return backgroundColors[bgcolor];
+        } 
+        return backgroundColors.primary;
     }
     
     return(
@@ -95,14 +113,15 @@ export default function Button({
                 cursor: "pointer",
                 transition: "transform 0.3s ease",
                 backgroundColor: setBgColor(),
-                color:btnVariants[variant] ? "#36454F" : "white",
+                color: setTextColor(),
                 marginLeft: "20px",
                 marginTop:"10px",
                 fontSize: "20px",
                 width: btnSize[size]? btnSize[size].width :btnSize.default.width,
                 borderRadius: isRoundedCorners ? "10px" : "0px",
                 border: btnVariants[variant] ? btnVariants[variant].border : "none",
-                textDecoration: (variant === "link" && toggle) ? "underline" : "none"
+                textDecoration: (variant === "link" && toggle) ? "underline" : "none",
+                borderColor: setBorderColor()
             }}
             onMouseEnter={handleOnMouseEnter}
             onMouseLeave={handleOnMouseLeave}
