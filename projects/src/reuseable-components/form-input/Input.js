@@ -11,7 +11,7 @@ const inputVariant = {
         border : "2px solid"
     },
     filled:{
-        backgroundColor: "#AEC6CF"
+        backgroundColor: "#DBEBFF"
     },
     flushed:{
         border: "none",
@@ -23,7 +23,7 @@ const inputVariant = {
 }
 
 export default function Input(props){
-    const {placeholderText, leftaddons, rightaddons, size , variant} = props;
+    const {placeholderText, leftAddons, rightAddons, size , variant, leftIcon, rightIcon} = props;
 
     const [hasFocus, setHasFocus] = useState(false);
 
@@ -32,19 +32,20 @@ export default function Input(props){
         border: inputVariant.outline.border,
         width: "80%",
         height: inputSizes.sm,
-        padding: "10px",
-        borderColor: "gray",
+        paddingLeft:"10px",
+        borderColor: "#D1CEBD",
         backgroundColor: "white",
         boxShadow: "none",
         outline: "none",
-        borderBottom: "2px solid gray"
+        borderBottom: "2px solid #D1CEBD",
+        borderRadius: "5px"
     };
-        if(leftaddons || rightaddons){
-            style.border = hasFocus ? "2px solid blue" : "none";
+        if(leftAddons || rightAddons || rightIcon ||leftIcon){
+            style.border = "none";
             style.borderBottom = "none";
         }
         if(hasFocus){
-            style.borderColor = "blue";
+            style.borderColor = "#D291BC";
         }
         if(size){
             style.height =  inputSizes[size]
@@ -56,8 +57,10 @@ export default function Input(props){
             style.borderBottom = "none"
         }
         if(variant === "filled"){
-            console.log(hasFocus)
             style.backgroundColor = hasFocus ? "white" : inputVariant.filled.backgroundColor;
+        }
+        if(variant === "flushed"){
+            style.borderRadius = "none"
         }
         return style;
     };
@@ -72,17 +75,23 @@ export default function Input(props){
 
     return(
         <div style={{
-                border: (leftaddons || rightaddons) ? "2px solid gray" : "none",
+                border: (leftAddons || rightAddons || rightIcon ||leftIcon) ? "2px solid #D1CEBD" : "none",
                 width: "50%",
                 margin: "10px",
                 position: "relative",
-                backgroundColor: (leftaddons || rightaddons)? "gray" : "none"
+                borderRadius: (leftAddons || rightAddons || rightIcon ||leftIcon) ? "5px" : "none"
             }}>
-            {leftaddons && <span style={{
-                padding:"7px", 
-                backgroundColor:"gray", 
-                border:"2px solid gray"
-            }}>{leftaddons}</span>}
+            { leftIcon && <i class={`fas fa-${leftIcon}`} 
+                style={{padding:"10px",
+                        marginRight:"10px",
+                        marginLeft:"10px",
+                        position:"relative" 
+                }}></i> }
+            {leftAddons && <span style={{
+                padding:"7px",
+                position:"relative" 
+                // border:"2px solid gray"
+            }}>{leftAddons}</span>}
             <input 
                 style={getInputStyles()}
                 type="text"
@@ -91,11 +100,16 @@ export default function Input(props){
                 onBlur={handleOnBlur}
             >
             </input>
-            {rightaddons && <span style={{
+            {rightAddons && <span style={{
                 padding:"7px", 
-                backgroundColor:"gray", 
-                border:"2px solid gray"
-            }}>{rightaddons}</span>}
+                position:"relative", 
+                left:leftAddons ? "10px" : "70px"
+            }}>{rightAddons}</span>}
+            { rightIcon && <i class={`fas fa-${rightIcon}`} style={{
+                padding:"7px", 
+                position:"relative", 
+                left:leftIcon ? "20px" : "75px"
+            }}></i> }
         </div>
     )
 }
