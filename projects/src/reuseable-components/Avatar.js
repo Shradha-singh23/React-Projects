@@ -1,52 +1,75 @@
 import React from "react";
 
-const avatarSizes= {
+const avatarImageSizes= {
     xs:{
         width: "10%",
-        height: "5%"
+        height: "5%",
+        padding: "34px",
+        fontSize: "40px"
     },
     sm:{
-        width: "13%",
-        height:"10%"
+        width: "12%",
+        height:"8%",
+        padding: "38px",
+        fontSize: "50px"
     },
     md:{
-        width: "18%",
-        height:"14%"
+        width: "15%",
+        height:"10%",
+        padding: "50px",
+        fontSize: "60px"
     },
     lg:{
-        width: "20%",
-        height:"20%"
+        width: "18%",
+        height:"15%",
+        padding: "60px",
+        fontSize: "70px"
     }
 }
-const avatarBgColors={
-    default: "#DBD0C0",
-    primary: "#630000",
-    secondary: "#142F43",
-    tertiary: "#483434"
+
+const avatarVariant = {
+    default : "250px",
+    square: "none",
+    rounded : "30px"
 }
 
 export default function Avatar(props){
-    const {source, size, bgcolor} = props;
+    const {source, size, variant, title} = props;
 
     const getAvatarStyles = () => {
         const style = {
-            width: avatarSizes.xs.width,
-            height: avatarSizes.xs.height,
-            padding:"10px",
-            border: "2px solid #D1CEBD",
-            margin: "20px",
-            backgroundColor: avatarBgColors.default
+            width: avatarImageSizes.xs.width,
+            height: avatarImageSizes.xs.height,
+            padding:"2px",
+            marginLeft: "20px",
+            marginRight: "20px",
+            borderRadius: avatarVariant.default,
+            border: "1px solid #D1CEBD",
+            display: "inline-block",
+            backgroundColor: "none",
+            fontSize: "40px",
+            color: "white"
         }
         if(size){
-            style.width = avatarSizes[size].width;
-            style.height = avatarSizes[size].height;
+            style.width = avatarImageSizes[size].width;
+            style.height = avatarImageSizes[size].height;
         }
-        if(bgcolor){
-            style.backgroundColor = avatarBgColors[bgcolor];
+        if(title){
+            style.padding = size ? avatarImageSizes[size].padding : avatarImageSizes.xs.padding;
+            style.fontSize = size ? avatarImageSizes[size].fontSize : avatarImageSizes.xs.fontSize;
+        }
+        if(title){
+            style.backgroundColor = "#D1CEBD"
+        }
+        if(variant){
+            style.borderRadius = avatarVariant[variant];
         }
         return style;
     };
     return(
-            <img src={source} alt="user" style={getAvatarStyles()}/>
+        <>
+            {source && <img src={source} alt="user" style={getAvatarStyles()}/> }     
+            {title && <p style={getAvatarStyles()}> {title}  </p>}
+        </>
     )
 }
