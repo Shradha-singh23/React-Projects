@@ -82,7 +82,7 @@ export default function Input(props){
                 borderRadius: (leftAddons || rightAddons || rightIcon ||leftIcon) ? "5px" : "none"
             }}>
             { leftIcon && <i class={`fas fa-${leftIcon}`} 
-                style={{padding:"10px",
+                style={{padding:"7px",
                         marginRight:"10px",
                         marginLeft:"10px",
                         position:"relative" 
@@ -108,7 +108,7 @@ export default function Input(props){
             { rightIcon && <i class={`fas fa-${rightIcon}`} style={{
                 padding:"7px", 
                 position:"relative", 
-                left:leftIcon ? "20px" : "75px"
+                left:leftIcon ? "25px" : "75px"
             }}></i> }
         </div>
     )

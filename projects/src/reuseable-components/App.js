@@ -1,9 +1,11 @@
 import React from "react";
 import Input from "./Input";
+import Button from "./Button";
 
 export default function App(){
     return(
         <>
+            <Button> click me </Button>
             <h1> Input with different Sizes </h1>
             <Input size="xs" placeholderText ="Extra Small" />
             <Input size="sm" placeholderText ="Small" />
