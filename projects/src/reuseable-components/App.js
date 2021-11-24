@@ -1,28 +1,30 @@
 import React from "react";
-import Input from "./Input";
-import Button from "./Button";
+// import Input from "./Input";
+// import Button from "./Button";
+import Avatar from "./Avatar";
 
 export default function App(){
     return(
         <>
-            <Button> click me </Button>
-            <h1> Input with different Sizes </h1>
-            <Input size="xs" placeholderText ="Extra Small" />
-            <Input size="sm" placeholderText ="Small" />
-            <Input size="md" placeholderText ="Medium" />
-            <Input size="lg" placeholderText ="Large" />
-            <br /> 
-            <h1> Input with different Variants </h1>
-            <Input variant="outline" placeholderText ="Outline" />
-            <Input variant="filled" placeholderText ="Filled" />
-            <Input variant ="flushed" placeholderText = "flushed" />
-            <Input variant="outline" placeholderText ="outline" />
-            <Input variant="outline" placeholderText ="Left Add Ons" leftAddons="https://" />
-            <Input variant="outline" placeholderText ="Right Add Ons" rightAddons=".com" />
-            <Input placeholderText = "Left and Right AddOns" leftAddons="https://" rightAddons=".com" />
-            <Input placeholderText = "Left Icon" leftIcon = "phone"  />
-            <Input placeholderText = "Right Icon" rightIcon = "envelope" />
-            <Input placeholderText = "Left and Right Icon" rightIcon = "envelope" leftIcon = "phone" />
+            <Avatar source = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK7KguIaOT7dM5oP5ZW9G4dEdCEWRhI8kfaA&usqp=CAU" />
+            <Avatar 
+                source = "https://png.pngtree.com/png-clipart/20190614/original/pngtree-male-student-icon-png-image_3728104.jpg"
+                size = "sm"
+            />
+            <Avatar 
+                source = "https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
+                size = "md"
+                bgcolor = "tertiary"
+            />
+            <Avatar 
+                source = "https://png.pngitem.com/pimgs/s/22-223925_female-avatar-female-avatar-no-face-hd-png.png"
+                size = "lg"
+                bgcolor = "secondary"
+            />
+            <Avatar source = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK7KguIaOT7dM5oP5ZW9G4dEdCEWRhI8kfaA&usqp=CAU" 
+                size = "sm"
+                bgcolor = "primary"
+            />
         </>
     )
 }

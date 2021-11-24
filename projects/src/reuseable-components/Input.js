@@ -90,7 +90,6 @@ export default function Input(props){
             {leftAddons && <span style={{
                 padding:"7px",
                 position:"relative" 
-                // border:"2px solid gray"
             }}>{leftAddons}</span>}
             <input 
                 style={getInputStyles()}
