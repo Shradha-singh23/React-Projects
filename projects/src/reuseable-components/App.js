@@ -6,7 +6,7 @@ import Avatar from "./Avatar";
 export default function App(){
     return(
         <>
-            <h1 style={{fontSize:"20px",paddingTop:"20px", marginLeft:"20px"}}> Avatar Sizes</h1>
+            {/* <h1 style={{fontSize:"20px",paddingTop:"20px", marginLeft:"20px"}}> Avatar Sizes</h1>
             <Avatar 
                 title="AB"
             />
@@ -34,19 +34,54 @@ export default function App(){
             <Avatar 
                 title="AB"
                 variant="rounded"
-            />
-            <br/>
+            /> */}
+            {/* <br/>
             <h1 style={{fontSize:"20px", marginLeft:"20px"}}> Avatar with Source and Variants</h1>
             <Avatar source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK7KguIaOT7dM5oP5ZW9G4dEdCEWRhI8kfaA&usqp=CAU" />
             <Avatar 
                 source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-male-student-icon-png-image_3728104.jpg"
                 size="sm"
                 variant="squared"
+            /> */}
+            
+            <Avatar 
+                title="AB"
+                isEditable="true"
+            />
+            <Avatar 
+                title="AB"
+                isEditable="true"
+                size="sm"
+            />
+            <Avatar 
+                title="AB"
+                isEditable="true"
+                size="md"
+            />
+            <Avatar 
+                title="AB"
+                isEditable="true"
+                size="lg"
+            />
+            <br />
+            <Avatar 
+                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
+                isEditable="true"
             />
             <Avatar 
                 source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
+                isEditable="true"
+                size="sm"
+            />
+            <Avatar 
+                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
+                isEditable="true"
                 size="md"
-                variant="rounded"
+            />
+            <Avatar 
+                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
+                isEditable="true"
+                size="lg"
             />
         </>
     )
