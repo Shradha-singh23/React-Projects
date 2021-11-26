@@ -1,88 +1,41 @@
 import React from "react";
 // import Input from "./Input";
 // import Button from "./Button";
-import Avatar from "./Avatar";
+// import Avatar from "./Avatar";
+import Badge from "./Badge";
 
 export default function App(){
     return(
-        <>
-            {/* <h1 style={{fontSize:"20px",paddingTop:"20px", marginLeft:"20px"}}> Avatar Sizes</h1>
-            <Avatar 
-                title="AB"
+        <div>
+            <h1 style={{marginTop:"10px", fontSize:"25px"}}> Badge Sizes </h1>
+            <Badge 
+                badgeText="0"
+                size="xs"
             />
-            <Avatar 
-                title="AB"
+            <Badge 
+                badgeText="10" 
                 size="sm"
             />
-            <Avatar 
-                title="AB"
-                size="md"
+            <Badge 
+                badgeText="100" 
+                size="md"   
             />
-            <Avatar 
-                title="AB"
+            <Badge 
+                badgeText="1000"
                 size="lg"
             />
-            <br />
-            <h1 style={{fontSize:"20px", marginLeft:"20px"}}> Avatar Variants </h1>
-            <Avatar 
-                title="AB"
+            <h1 style={{marginTop:"10px", fontSize:"25px"}}> Badge Types </h1>
+            <Badge 
+                badgeText="10"
             />
-            <Avatar 
-                title="AB"
-                variant="square"
+            <Badge 
+                isMini
+                badgeText="10"
             />
-            <Avatar 
-                title="AB"
-                variant="rounded"
-            /> */}
-            {/* <br/>
-            <h1 style={{fontSize:"20px", marginLeft:"20px"}}> Avatar with Source and Variants</h1>
-            <Avatar source="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK7KguIaOT7dM5oP5ZW9G4dEdCEWRhI8kfaA&usqp=CAU" />
-            <Avatar 
-                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-male-student-icon-png-image_3728104.jpg"
-                size="sm"
-                variant="squared"
-            /> */}
-            
-            <Avatar 
-                title="AB"
-                isEditable="true"
+            <Badge
+                isSqaured = "true"
+                badgeText="10"
             />
-            <Avatar 
-                title="AB"
-                isEditable="true"
-                size="sm"
-            />
-            <Avatar 
-                title="AB"
-                isEditable="true"
-                size="md"
-            />
-            <Avatar 
-                title="AB"
-                isEditable="true"
-                size="lg"
-            />
-            <br />
-            <Avatar 
-                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
-                isEditable="true"
-            />
-            <Avatar 
-                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
-                isEditable="true"
-                size="sm"
-            />
-            <Avatar 
-                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
-                isEditable="true"
-                size="md"
-            />
-            <Avatar 
-                source="https://png.pngtree.com/png-clipart/20190614/original/pngtree-female-avatar-vector-icon-png-image_3725439.jpg"
-                isEditable="true"
-                size="lg"
-            />
-        </>
+        </div>
     )
 }
