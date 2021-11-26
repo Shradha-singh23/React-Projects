@@ -7,23 +7,32 @@ const inputSizes = {
     lg: "50px"
 }
 const inputVariant = {
-    outline:{
+    outline: {
         border : "2px solid"
     },
-    filled:{
+    filled: {
         backgroundColor: "#DBEBFF"
     },
-    flushed:{
+    flushed: {
         border: "none",
         borderBottom: "2px solid gray"
     },
-    unstyled:{
+    unstyled: {
         border: "none"
     }
 }
 
 export default function Input(props){
-    const {placeholderText, leftAddons, rightAddons, size , variant, leftIcon, rightIcon} = props;
+    const {
+        placeholderText, 
+        type,
+        leftAddons, 
+        rightAddons, 
+        size , 
+        variant, 
+        leftIcon, 
+        rightIcon
+    } = props;
 
     const [hasFocus, setHasFocus] = useState(false);
 
@@ -41,8 +50,8 @@ export default function Input(props){
         borderRadius: "5px"
     };
         if(leftAddons || rightAddons || rightIcon ||leftIcon){
-            style.border = "none";
-            style.borderBottom = "none";
+            style.border = hasFocus ? "2px solid #D291BC" : "none";
+            style.borderBottom = hasFocus ? "2px solid #D291BC" : "none";
         }
         if(hasFocus){
             style.borderColor = "#D291BC";
@@ -65,6 +74,62 @@ export default function Input(props){
         return style;
     };
 
+    const getDivContainerStyle = () => {
+        const style = {
+            border: "none",
+            width: "50%",
+            margin: "10px",
+            position: "relative",
+            borderRadius: "none",
+            borderBottom: "none"
+        }
+        if(leftAddons || rightAddons || rightIcon ||leftIcon){  
+            style.border = (variant==="flushed" || variant==="unstyled") 
+                            ? inputVariant[variant].border
+                            : "2px solid #D1CEBD";
+            style.borderBottom = (variant==="unstyled")? "none" : "2px solid #D1CEBD";
+            style.borderRadius = (variant==="flushed") ? "none" : "5px"
+        }
+        return style;
+    }
+
+    const getLeftIconStyle = () => {
+        const style = {
+            padding: "7px",
+            marginRight: leftIcon ? "10px" : "0px",
+            marginLeft: leftIcon ? "10px" : "0px",
+            position: "relative",
+            width:"7%"
+        }
+        return style;
+    }
+
+    const getRightIconStyle = () => {
+        const style = {
+            padding: "7px",  
+            position: "relative",
+            left:leftIcon ? "28px" : "92px",
+            width:"7%"
+        }
+        return style;
+    }
+
+    const getLeftAddOnsStyle = () => {
+        const style = {
+            padding: "7px",
+            position: "relative"
+        }
+        return style;
+    }
+    const getRightAddOnsStyle = () => {
+        const style = {
+            padding: "7px",
+            position: "relative",
+            left: leftAddons ? "19px" : "78px"  
+        }
+        return style;
+    }
+
     const handleOnFocus = () => {
         setHasFocus(true);
     }
@@ -74,41 +139,19 @@ export default function Input(props){
     }
 
     return(
-        <div style={{
-                border: (leftAddons || rightAddons || rightIcon ||leftIcon) ? "2px solid #D1CEBD" : "none",
-                width: "50%",
-                margin: "10px",
-                position: "relative",
-                borderRadius: (leftAddons || rightAddons || rightIcon ||leftIcon) ? "5px" : "none"
-            }}>
-            { leftIcon && <i class={`fas fa-${leftIcon}`} 
-                style={{padding:"7px",
-                        marginRight:"10px",
-                        marginLeft:"10px",
-                        position:"relative" 
-                }}></i> }
-            {leftAddons && <span style={{
-                padding:"7px",
-                position:"relative" 
-            }}>{leftAddons}</span>}
+        <div style={getDivContainerStyle()}>
+            {leftIcon && <i class={`fas fa-${leftIcon}`} style={getLeftIconStyle()}></i> }
+            {leftAddons && <span style={getLeftAddOnsStyle()}>{leftAddons}</span>}
             <input 
                 style={getInputStyles()}
-                type="text"
-                placeholder={placeholderText}
+                type={type || "text"} 
+                placeholder={placeholderText || "Type Here"}
                 onFocus={handleOnFocus}
                 onBlur={handleOnBlur}
             >
             </input>
-            {rightAddons && <span style={{
-                padding:"7px", 
-                position:"relative", 
-                left:leftAddons ? "10px" : "70px"
-            }}>{rightAddons}</span>}
-            { rightIcon && <i class={`fas fa-${rightIcon}`} style={{
-                padding:"7px", 
-                position:"relative", 
-                left:leftIcon ? "25px" : "75px"
-            }}></i> }
+            {rightAddons && <span style={getRightAddOnsStyle()}>{rightAddons}</span>}
+            { rightIcon && <i class={`fas fa-${rightIcon}`} style={getRightIconStyle()}></i> }
         </div>
     )
 }

@@ -1,40 +1,37 @@
 import React from "react";
-// import Input from "./Input";
+import Input from "./Input";
 // import Button from "./Button";
 // import Avatar from "./Avatar";
-import Badge from "./Badge";
+// import Badge from "./Badge";
 
 export default function App(){
     return(
         <div>
             <h1 style={{marginTop:"10px", fontSize:"25px"}}> Badge Sizes </h1>
-            <Badge 
-                badgeText="0"
-                size="xs"
+            <Input
+                type="text"
+                variant = "flushed"
             />
-            <Badge 
-                badgeText="10" 
-                size="sm"
+            <Input
+                leftAddons = "https://"
+                variant = "flushed"
             />
-            <Badge 
-                badgeText="100" 
-                size="md"   
+            <Input
+                rightAddons = ".com"
             />
-            <Badge 
-                badgeText="1000"
-                size="lg"
+            <Input
+                leftAddons = "https://"
+                rightAddons = ".com"
             />
-            <h1 style={{marginTop:"10px", fontSize:"25px"}}> Badge Types </h1>
-            <Badge 
-                badgeText="10"
+            <Input
+                leftIcon = "envelope"
+                rightIcon = "envelope"
             />
-            <Badge 
-                isMini
-                badgeText="10"
+            <Input
+                leftIcon = "envelope"
             />
-            <Badge
-                isSqaured = "true"
-                badgeText="10"
+            <Input
+                rightIcon = "envelope"
             />
         </div>
     )
