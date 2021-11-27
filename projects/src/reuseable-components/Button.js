@@ -64,6 +64,64 @@ export default function Button({
     const [toggle, setToggle] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    const getButtonStyles = () => {
+        const style = {
+            fontWeight: 400,
+            padding: btnSize.default.padding,
+            cursor: "pointer",
+            transition: "transform 0.3s ease",
+            backgroundColor: backgroundColors.primary,
+            color: "white",
+            marginLeft: "20px",
+            marginTop: "10px",
+            fontSize: "20px",
+            width: btnSize.default.width,
+            borderRadius: "0px",
+            border: "none",
+            textDecoration: "none",
+            borderColor: backgroundColors.primary
+        }
+        if(btnVariants[variant]){
+            style.border = btnVariants[variant].border;
+        }
+        if(variant === "link" && toggle){
+            style.textDecoration = "underline";
+        }
+        if(isRoundedCorners){
+            style.borderRadius = "10px";
+        }
+        if(btnSize[size]){
+            style.padding = btnSize[size].padding;
+            style.width = btnSize[size].width;
+        }
+        if(toggle && variant !== "link"){
+            style.backgroundColor = "#AEC6CF";
+        }
+        if(loading){
+            style.backgroundColor = "#cfcfc4";
+        }
+        if(bgcolor && variant){
+            style.backgroundColor = btnVariants[variant].bgColor;
+        }
+        if(backgroundColors[bgcolor]){
+            style.backgroundColor = backgroundColors[bgcolor];
+        }
+        if(btnVariants[variant] && !toggle){
+            style.backgroundColor = btnVariants[variant].bgColor;
+        }
+        if(variant === "link"){
+           style.backgroundColor = "white";
+        }
+        if(btnVariants[variant] && variant !== "solid"){
+            style.color = "#36454F";
+        }
+        if(variant === "outline"){
+            if(bgcolor && backgroundColors[bgcolor])
+            style.borderColor = backgroundColors[bgcolor];
+        }
+        return style;
+    }
+
     function handleOnMouseEnter(){
         if(variant && variant !== "solid"){
             setToggle(true)
@@ -75,75 +133,21 @@ export default function Button({
         setToggle(false)
     }
 
-    function setBgColor(){
-        if(toggle && variant !== "link"){
-            return "#AEC6CF";
-        }
-        if(loading){
-            return "#cfcfc4"
-        }
-        if(bgcolor && variant){
-            return btnVariants[variant].bgColor;
-        }
-        
-        if(backgroundColors[bgcolor]){
-            return backgroundColors[bgcolor];
-        }
-        if(btnVariants[variant] && !toggle){
-            return btnVariants[variant].bgColor;
-        }
-        if(variant === "link"){
-            return "white";
-        }
-        return backgroundColors.primary;
-    }
-
-    function setTextColor(){
-        if(btnVariants[variant] && variant !== "solid"){
-            return "#36454F";
-        }
-        return "white";
-    }
-
-    function setBorderColor(){
-        if(variant === "outline"){
-            if(bgcolor && backgroundColors[bgcolor])
-            return backgroundColors[bgcolor];
-        } 
-        return backgroundColors.primary;
-    }
-
     function handleOnClick(){
-        console.log("clicked")
         if(isLoading){
             setLoading(true);
-            setBgColor();
+            getButtonStyles();
         }
         console.log(loading);
     }
     
     return(
         <button
-            style={{
-                fontWeight: 400,
-                padding: btnSize[size]? btnSize[size].padding : btnSize.default.padding,
-                cursor: "pointer",
-                transition: "transform 0.3s ease",
-                backgroundColor: setBgColor(),
-                color: setTextColor(),
-                marginLeft: "20px",
-                marginTop:"10px",
-                fontSize: "20px",
-                width: btnSize[size]? btnSize[size].width :btnSize.default.width,
-                borderRadius: isRoundedCorners ? "10px" : "0px",
-                border: btnVariants[variant] ? btnVariants[variant].border : "none",
-                textDecoration: (variant === "link" && toggle) ? "underline" : "none",
-                borderColor: setBorderColor()
-            }}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-            disabled={loading}
-            onClick={handleOnClick}
+            style = {getButtonStyles()}
+            onMouseEnter = {handleOnMouseEnter}
+            onMouseLeave = {handleOnMouseLeave}
+            disabled = {loading}
+            onClick = {handleOnClick}
         >
             { leftIcon && <i class={`fas fa-${leftIcon}`} style={{paddingRight:"10px"}}></i> }
             { loading && <i class={`fas fa-spinner`} style={{paddingRight:"10px"}}></i> }

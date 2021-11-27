@@ -4,22 +4,22 @@ const badgeSizes = {
     xs:{
         width: "25px",
         height: "25px",
-        padding:"1px"
+        padding: "1px"
     },
     sm: {
-        width:"40px",
+        width: "40px",
         height: "28px",
-        padding:"2px"
+        padding: "2px"
     },
     md: {
-        width:"45px",
-        height:"32px",
-        padding:"3px"
+        width: "45px",
+        height: "32px",
+        padding: "3px"
     },
     lg: {
-        width:"50px",
-        height:"35px",
-        padding:"4px"
+        width: "50px",
+        height: "35px",
+        padding: "4px"
     }
 }
 
@@ -27,11 +27,11 @@ export default function Badge(props){
     const { badgeText, size, isSqaured, isMini } = props;
     const getBadgeStyle = () => {
         const style = {
-            display:"inline-block",
-            marginTop:"5px",
-            marginLeft:"10px",
+            display: "inline-block",
+            marginTop: "5px",
+            marginLeft: "10px",
             backgroundColor: "rgb(30, 136, 229)",
-            color:"white",
+            color: "white",
             padding: badgeSizes.sm.padding,
             borderRadius: "15px",
             fontWeight: "bold",
@@ -39,7 +39,7 @@ export default function Badge(props){
             width: badgeSizes.sm.width,
             height: badgeSizes.sm.height,
             alignContent: "center",
-            textAlign:"center",
+            textAlign: "center",
         };
         if(size){
             style.width = badgeSizes[size].width;
@@ -47,12 +47,12 @@ export default function Badge(props){
             style.padding = badgeSizes[size].padding;
         }
         if(isSqaured){
-            style.borderRadius= "0px"
+            style.borderRadius = "0px"
         }
         if(isMini){
-            style.borderRadius="50px";
-            style.width="20px";
-            style.height="20px";
+            style.borderRadius = "50px";
+            style.width = "20px";
+            style.height = "20px";
         }
         return style
     }

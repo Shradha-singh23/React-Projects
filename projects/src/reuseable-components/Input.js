@@ -44,7 +44,7 @@ export default function Input(props){
         border: inputVariant.outline.border,
         width: "80%",
         height: inputSizes.sm,
-        paddingLeft:"10px",
+        paddingLeft: "10px",
         borderColor: "#D1CEBD",
         backgroundColor: "white",
         boxShadow: "none",

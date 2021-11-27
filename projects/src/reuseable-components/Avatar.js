@@ -9,19 +9,19 @@ const avatarSizes= {
     },
     sm:{
         width: "10%",
-        height:"8%",
+        height: "8%",
         padding: "35px",
         fontSize: "45px"
     },
     md:{
         width: "12%",
-        height:"10%",
+        height: "10%",
         padding: "42px",
         fontSize: "55px"
     },
     lg:{
         width: "15%",
-        height:"15%",
+        height: "15%",
         padding: "50px",
         fontSize: "70px"
     }
@@ -79,7 +79,7 @@ export default function Avatar(props){
         const style = {
             width: avatarSizes.xs.width,
             height: avatarSizes.xs.height,
-            padding:"2px",
+            padding: "2px",
             marginLeft: "20px",
             marginRight: "20px",
             borderRadius: avatarVariant.default,
@@ -107,10 +107,10 @@ export default function Avatar(props){
     };
     const getEditableIconStyle = () => {
         const style = {
-            borderRadius:"13px",
+            borderRadius: "13px",
             width: "22px",
-            height:"22px",
-            padding:"4px",
+            height: "22px",
+            padding: "4px",
             position: "absolute",
             left: source ? iconInsideImageSize.xs.left : iconInsideTitleSize.xs.left,
             top: source ? iconInsideImageSize.xs.top : iconInsideTitleSize.xs.top,
