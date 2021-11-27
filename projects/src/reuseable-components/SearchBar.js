@@ -13,18 +13,8 @@ export default function SearchBar(props){
         size
     } = props ;
 
-    const getLabelStyle = () => {
-        const style = {
-            margin: "10px",
-            fontSize: "20px",
-            fontFamily: "Courier New"
-        }
-        return style;
-    }
-
     return(
         <>
-            {label && <label style={getLabelStyle()}>{label}</label>}
             <Input 
                 variant={variant} 
                 leftIcon="search"
@@ -34,6 +24,7 @@ export default function SearchBar(props){
                 disabled={disabled}
                 rightIcon={loading ? "spinner" : ""}
                 size={size}
+                label={label}
             />
         </>
     )    

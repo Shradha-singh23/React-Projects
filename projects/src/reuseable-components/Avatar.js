@@ -73,7 +73,6 @@ const iconInsideImageSize = {
 
 export default function Avatar(props){
     const {source, size, variant, title, isEditable} = props;
-    let url=""
 
     const getAvatarStyles = () => {
         const style = {
@@ -96,9 +95,7 @@ export default function Avatar(props){
         if(title){
             style.padding = size ? avatarSizes[size].padding : avatarSizes.xs.padding;
             style.fontSize = size ? avatarSizes[size].fontSize : avatarSizes.xs.fontSize;
-        }
-        if(title){
-            style.backgroundColor = "#D1CEBD"
+            style.backgroundColor = "#D1CEBD";
         }
         if(variant){
             style.borderRadius = avatarVariant[variant];
@@ -128,18 +125,18 @@ export default function Avatar(props){
         }
         return style;
     }
+
     return(
-        <>
+        <>  
             <div style={{
                 display:"inline",
                 marginLeft:"20px",
                 position:"relative"
-            }}>
-                {isEditable && <a href={url}>
-                    {source && <img src={source} alt="user" style={getAvatarStyles()} isEditable/> }     
-                    {title && <p style={getAvatarStyles()} onClick={()=>console.log("eyuwyefi")}> {title}  </p>}
-                    {isEditable && <i class="fal fa-pen" style={getEditableIconStyle()}></i>}
-                </a>}
+            }}
+            >
+                {source && <img src={source} alt="user" style={getAvatarStyles()}/> }     
+                {title && <p style={getAvatarStyles()}> {title} </p>}
+                {isEditable && <i class="fal fa-pen" style={getEditableIconStyle()}></i>}
             </div>
         </>
     )

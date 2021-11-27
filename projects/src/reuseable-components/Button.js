@@ -138,21 +138,23 @@ export default function Button({
             setLoading(true);
             getButtonStyles();
         }
-        console.log(loading);
     }
     
     return(
         <button
-            style = {getButtonStyles()}
-            onMouseEnter = {handleOnMouseEnter}
-            onMouseLeave = {handleOnMouseLeave}
-            disabled = {loading}
-            onClick = {handleOnClick}
+            style={getButtonStyles()}
+            onMouseEnter={handleOnMouseEnter}
+            onMouseLeave={handleOnMouseLeave}
+            disabled={loading}
+            onClick={handleOnClick}
         >
-            { leftIcon && <i class={`fas fa-${leftIcon}`} style={{paddingRight:"10px"}}></i> }
-            { loading && <i class={`fas fa-spinner`} style={{paddingRight:"10px"}}></i> }
-            { loading ? loadingText : children }
-            { rightIcon && <i class={`fas fa-${rightIcon}`} style={{paddingLeft:"5px"}}></i> }
+            {leftIcon && <i class={`fas fa-${leftIcon}`} style={{paddingRight:"10px"}}></i>}
+            {loading && <i class={`fas fa-spinner`} style={{paddingRight:"10px"}}></i>}
+            {loading ? loadingText : children}
+            {rightIcon && <i class={`fas fa-${rightIcon}`} style={{paddingLeft:"5px"}}></i>}
         </button>
     );
+}
+Button.defaultProps = {
+    loadingText: "Loading..."
 }

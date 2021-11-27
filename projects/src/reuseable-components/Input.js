@@ -34,7 +34,10 @@ export default function Input(props){
         rightIcon,
         error,
         errorCaption,
-        disabled
+        disabled,
+        onFocus,
+        onBlur,
+        label
     } = props;
 
     const [hasFocus, setHasFocus] = useState(false);
@@ -156,23 +159,35 @@ export default function Input(props){
         return style;
     }
 
+    const getLabelStyle = () => {
+        const style = {
+            margin: "10px",
+            fontSize: "20px",
+            fontFamily: "Courier New"
+        }
+        return style;
+    }
+
     const handleOnFocus = () => {
         setHasFocus(true);
+        if(onFocus) onFocus();
     }
 
     const handleOnBlur = () => {
         setHasFocus(false);
+        if(onBlur) onBlur();
     }
 
     return(
         <>
+            {label && <label style={getLabelStyle()}>{label}
             <div style={getDivContainerStyle()}>
                 {leftIcon && <i class={`fas fa-${leftIcon}`} style={getLeftIconStyle()}></i> }
                 {leftAddons && <span style={getLeftAddOnsStyle()}>{leftAddons}</span>}
                 <input 
                     style={getInputStyles()}
-                    type={type || "text"} 
-                    placeholder={placeholderText || "Type Here"}
+                    type={type} 
+                    placeholder={placeholderText}
                     onFocus={handleOnFocus}
                     onBlur={handleOnBlur}
                     disabled={disabled}
@@ -181,7 +196,13 @@ export default function Input(props){
                 {rightAddons && <span style={getRightAddOnsStyle()}>{rightAddons}</span>}
                 {rightIcon && <i class={`fas fa-${rightIcon}`} style={getRightIconStyle()}></i>}
             </div>
-            {error && <p style={getErrorStyle()}>{errorCaption || "Please try again"}</p>}
+            {error && <p style={getErrorStyle()}>{errorCaption}</p>}
+            </label>}
         </>
     )
+}
+Input.defaultProps = {
+    errorCaption: "Please try again",
+    type: "text",
+    placeholderText: "Type here"
 }
